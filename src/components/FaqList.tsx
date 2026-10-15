@@ -9,7 +9,7 @@ export function FaqList({ items }: { items: readonly FaqItem[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <div className="divide-y divide-line border-y border-line">
+    <div className="divide-y divide-line">
       {items.map((item) => {
         const open = openId === item.id;
         const panelId = `${baseId}-${item.id}-panel`;

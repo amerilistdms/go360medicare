@@ -17,8 +17,12 @@ export default function MedicareOptionsPage() {
       <PageHeader eyebrow={optionsPage.eyebrow} title={optionsPage.title} lede={optionsPage.lede} />
       <div className="container-site py-14 md:py-20">
         <div className="space-y-16">
-          {optionsPage.sections.map((section) => (
-            <article key={section.id} id={section.id} className="scroll-mt-28 border-t border-line pt-10">
+          {optionsPage.sections.map((section, index) => (
+            <article
+              key={section.id}
+              id={section.id}
+              className={`scroll-mt-28 ${index === 0 ? "" : "border-t border-line pt-10"}`}
+            >
               <p className="eyebrow">{section.kicker}</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-navy">{section.title}</h2>
               <div className="mt-4 max-w-3xl space-y-4 text-base leading-7 text-ink">

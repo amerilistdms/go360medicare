@@ -41,7 +41,7 @@ export function HomePage() {
 
   return (
     <div className="home-canvas">
-      <section className="bg-white">
+      <section>
         <div className="container-site grid items-center gap-10 py-12 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div className="max-w-xl">
             <p className="eyebrow">{hero.eyebrow}</p>
@@ -58,7 +58,7 @@ export function HomePage() {
               </a>
             </div>
             <HeroPaths />
-            <ul className="mt-8 grid gap-2 border-t border-line pt-5 text-sm text-muted">
+            <ul className="mt-8 grid gap-2 text-sm text-muted">
               {hero.trust.map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-teal" />
@@ -81,7 +81,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-space border-t border-line" aria-labelledby="benefits-title">
+      <section className="section-space" aria-labelledby="benefits-title">
         <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="relative order-2 min-h-[320px] overflow-hidden rounded-xl sm:min-h-[440px] lg:order-1 lg:min-h-[560px]">
             <Image
@@ -97,9 +97,9 @@ export function HomePage() {
               {benefits.title}
             </h2>
             <p className="mt-4 text-lg leading-8 text-muted">{benefits.lede}</p>
-            <ol className="mt-8 divide-y divide-line border-y border-line">
+            <ol className="mt-8 divide-y divide-line">
               {benefits.items.map((item, index) => (
-                <li key={item.id} className="grid grid-cols-[2.5rem_1fr] gap-3 py-5">
+                <li key={item.id} className="grid grid-cols-[2.5rem_1fr] gap-3 py-5 first:pt-0 last:pb-0">
                   <span className="pt-1 text-sm font-semibold tracking-[0.14em] text-teal">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -158,15 +158,9 @@ export function HomePage() {
             </a>
           </div>
           <ol className="relative space-y-8 border-l border-line pl-8">
-            {enrollment.cards.map((card, index) => {
-              const featured = card.id === "geography";
-              return (
+            {enrollment.cards.map((card, index) => (
                 <li key={card.id} className="relative">
-                  <span
-                    className={`absolute top-0 -left-[2.7rem] flex h-9 w-9 items-center justify-center rounded-full text-xs font-semibold ${
-                      featured ? "bg-navy text-white" : "border border-line bg-white text-navy"
-                    }`}
-                  >
+                  <span className="absolute top-0 -left-[2.7rem] flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-xs font-semibold text-navy">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-lg font-semibold text-navy">{card.title}</h3>
@@ -175,20 +169,19 @@ export function HomePage() {
                   ) : null}
                   <p className="mt-2 text-sm leading-6 text-muted">{card.body}</p>
                 </li>
-              );
-            })}
+            ))}
           </ol>
         </div>
       </section>
 
-      <section className="border-t border-line bg-navy text-white" aria-labelledby="how-title">
+      <section className="bg-navy text-white" aria-labelledby="how-title">
         <div className="container-site py-16 md:py-20">
           <h2 id="how-title" className="max-w-xl text-3xl font-semibold tracking-[-0.03em] md:text-4xl">
             {howItWorks.title}
           </h2>
-          <ol className="mt-10 grid gap-px bg-white/15 md:grid-cols-3">
+          <ol className="mt-10 grid gap-10 md:grid-cols-3">
             {howItWorks.steps.map((step) => (
-              <li key={step.number} className="bg-navy p-6 md:p-8">
+              <li key={step.number}>
                 <p className="text-sm font-semibold tracking-[0.16em] text-[#8fd4de]">{step.number}</p>
                 <h3 className="mt-4 text-xl font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-white/75">{step.body}</p>
